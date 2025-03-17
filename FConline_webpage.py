@@ -157,6 +157,11 @@ if st.sidebar.button("GK"):
 def main_page():
     st.title("FC온라인 대시보드 🚀")
     
+    if st.button("데이터 새로고침"):
+        st.cache_data.clear()  
+        st.rerun()
+    
+    
     # 우상단 업데이트 날짜
     query_update = "SELECT MAX(created_at) AS last_update FROM analytics.ranking_info;"
     df_update = run_query(query_update)
