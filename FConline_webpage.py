@@ -156,7 +156,7 @@ if st.sidebar.button("GK"):
 # 메인 페이지 (기본 화면)와 등급별 페이지의 공통 내용을 위한 함수
 def main_page():
     st.title("FC온라인 대시보드 🚀")
-    
+
     # 우상단 업데이트 날짜
     query_update = "SELECT MAX(created_at) AS last_update FROM analytics.ranking_info;"
     df_update = run_query(query_update)
@@ -166,6 +166,13 @@ def main_page():
     
     st.markdown(
     f"<div style='text-align: right; font-size:24px;'>데이터 업데이트:{formatted_date}</div>", unsafe_allow_html=True)
+    
+    _, col_btn = st.columns([8, 1])
+
+    with col_btn:
+        if st.button("데이터 새로고침"):
+            st.cache_data.clear()
+            st.rerun()
     
     st.header("TOP 1000 랭커")
     
