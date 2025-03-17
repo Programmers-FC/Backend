@@ -171,7 +171,6 @@ def main_page():
     with col_btn:
         if st.button("데이터 새로고침", key="refresh_button"):
             st.cache_data.clear()
-            st.rerun()
     
     st.header("TOP 1000 랭커")
     
