@@ -155,43 +155,21 @@ if st.sidebar.button("GK"):
 
 # 메인 페이지 (기본 화면)와 등급별 페이지의 공통 내용을 위한 함수
 def main_page():
-    
-    
     st.title("FC온라인 대시보드 🚀")
-<<<<<<< HEAD
 
     # 우상단 업데이트 날짜
     query_update = "SELECT MAX(created_at) AS last_update FROM analytics.ranking_info;"
     df_update = run_query(query_update)
     last_update = df_update.loc[0, "last_update"] if not df_update.empty else "정보 없음"
-=======
     
-    # 레이아웃 조정 (컬럼 활용)
-    col1, col2 = st.columns([7, 3])  # 비율 조정
->>>>>>> 6ed65c30b4fb7950fcf8f162a9c1974be4f71199
+    formatted_date = f"{last_update.year}년 {last_update.month}월 {last_update.day}일"
+    st.markdown(f"<div style='text-align: right; font-size:24px;'>데이터 업데이트:{formatted_date}</div>", unsafe_allow_html=True)
     
-    # 데이터 업데이트 날짜 (우측 정렬)
-    with col2:
-        query_update = "SELECT MAX(created_at) AS last_update FROM analytics.ranking_info;"
-        df_update = run_query(query_update)
-        last_update = df_update.loc[0, "last_update"] if not df_update.empty else "정보 없음"
-    
-        formatted_date = f"{last_update.year}년 {last_update.month}월 {last_update.day}일"
-        
-        st.markdown(
-            f"<div style='text-align: right; font-size:20px;'>데이터 업데이트: {formatted_date}</div>",
-            unsafe_allow_html=True
-        )
-    
-        # 버튼을 날짜 아래 배치
-        if st.button("데이터 새로고침"):
-            st.cache_data.clear()
-            st.rerun()
-    
+    # 데이터 새로고침 버튼
     _, col_btn = st.columns([8, 1])
 
     with col_btn:
-        if st.button("데이터 새로고침"):
+        if st.button("데이터 새로고침", key="refresh_button"):
             st.cache_data.clear()
             st.rerun()
     
