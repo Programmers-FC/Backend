@@ -166,7 +166,7 @@ def main_page():
     st.markdown(f"<div style='text-align: right; font-size:24px;'>데이터 업데이트:{formatted_date}</div>", unsafe_allow_html=True)
     
     # 데이터 새로고침 버튼
-    _, col_btn = st.columns([8, 1])
+    _, col_btn = st.columns([7, 1])
 
     with col_btn:
         if st.button("데이터 새로고침", key="refresh_button"):
