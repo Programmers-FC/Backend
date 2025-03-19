@@ -165,12 +165,12 @@ def main_page():
     formatted_date = f"{last_update.year}년 {last_update.month}월 {last_update.day}일"
     st.markdown(f"<div style='text-align: right; font-size:24px;'>데이터 업데이트:{formatted_date}</div>", unsafe_allow_html=True)
     
-    # 데이터 새로고침 버튼
-    _, col_btn = st.columns([7, 1])
+    # # 데이터 새로고침 버튼
+    # _, col_btn = st.columns([7, 1])
 
-    with col_btn:
-        if st.button("데이터 새로고침", key="refresh_button"):
-            st.cache_data.clear()
+    # with col_btn:
+    #     if st.button("데이터 새로고침", key="refresh_button"):
+    #         st.cache_data.clear()
     
     st.header("TOP 1000 랭커")
     
